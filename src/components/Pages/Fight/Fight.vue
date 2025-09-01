@@ -84,12 +84,21 @@ const filtered = computed(() => {
           <!-- footer bouton calé en bas à droite -->
           <div class="mt-2 flex justify-end">
             <RouterLink
-                :to="`/fight/zone/${z.id}`"
-                class="inline-flex items-center gap-2 rounded-lg hover:bg-gray-800
-               text-white px-3 py-2 border border-white/10"
+                :to="{ name: 'fight.zone', params: { id: z.id } }"
+                custom
+                v-slot="{ navigate, href }"
             >
-              <Swords class="h-4 w-4" />
-              Combattre
+              <button
+                  type="button"
+                  :disabled="!z.player_can_access"
+                  :aria-disabled="!z.player_can_access"
+                  class="inline-flex items-center gap-2 rounded-lg px-3 py-2 border border-white/10 text-white"
+                  :class="!z.player_can_access ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-800'"
+                  @click="z.player_can_access && navigate($event)"
+              >
+                <Swords class="h-4 w-4" />
+                Combattre
+              </button>
             </RouterLink>
           </div>
         </div>

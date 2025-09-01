@@ -15,6 +15,8 @@ const props = defineProps<{
     zone?: Zone | null
     gold_earned:number
     xp_earned:number
+    team_size?: number
+    xp_per_member?: number
     encounters_total:number
     /** Optionnels : si dispo on calcule la durée réelle */
     start_at?: string | null

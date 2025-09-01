@@ -29,7 +29,7 @@ const SIZE = 8 // props.spells.length
       </template>
     </div>
 
-    <h3 class="text-white font-semibold my-3">Statistiques</h3>
+    <h3 class="text-white font-semibold mt-8 mb-3">Statistiques</h3>
     <div class="grid grid-cols-2 gap-3">
       <StatTile class="cursor-pointer" :icon="Sword" label="Force"   :value="stats.strength" color="amber" />
       <StatTile class="cursor-pointer" :icon="Flame"    label="Puissance" :value="stats.power"  color="purple" />

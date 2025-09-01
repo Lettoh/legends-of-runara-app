@@ -169,7 +169,7 @@ function onAttached(zone: { id:number; name:string }) {
       class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
       @click.self="closeModal"
   >
-    <div class="w-full max-w-5xl rounded-xl border border-white/10 bg-neutral-900 shadow-xl">
+    <div class="w-full max-w-7xl rounded-xl border border-white/10 bg-neutral-900 shadow-xl">
       <!-- header -->
       <div class="flex items-center justify-between px-4 py-3 border-b border-white/10">
         <h3 class="text-white font-semibold">Monstres</h3>
@@ -234,10 +234,10 @@ function onAttached(zone: { id:number; name:string }) {
 
               <!-- stats -->
               <td class="px-3 py-2 text-white/80">
-                <div class="flex flex-wrap gap-x-4 gap-y-1">
-                  <span>HP <span class="text-white">{{ m.hp }}</span></span>
-                  <span>ATK <span class="text-white">{{ m.atk }}</span></span>
-                  <span>DEF <span class="text-white">{{ m.def }}</span></span>
+                <div class="gap-x-4 gap-y-1">
+                  <span>HP <span class="text-white">{{ m.hp }}</span><br></span>
+                  <span>ATK <span class="text-white">{{ m.atk }}</span><br></span>
+                  <span>DEF <span class="text-white">{{ m.def }}</span><br></span>
                 </div>
               </td>
 
@@ -271,11 +271,7 @@ function onAttached(zone: { id:number; name:string }) {
                       >
                         {{ z.name }}
                         <span class="px-1.5 py-0.5 rounded-full bg-white/10 border border-white/10 text-white/70">{{ z.spawn_chance ?? 100 }}%</span>
-                        <button class="ml-1 p-0.5 rounded hover:bg-white/10"
-                                @click.prevent="detach(m, z.id)"
-                                aria-label="Détacher">
-                          <X class="h-3 w-3 text-white/60" />
-                        </button>
+                          <X class="h-3 w-3 text-white/60 cursor-pointer" @click.prevent="detach(m, z.id)"/>
                       </span>
                   </template>
                   <span v-else class="text-xs text-white/50">—</span>

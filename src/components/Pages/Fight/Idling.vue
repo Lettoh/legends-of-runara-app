@@ -201,10 +201,11 @@ async function onClaim() {
       <!-- progression -->
       <div class="mt-4 rounded-xl border border-white/10 bg-white/5 p-3">
         <div class="flex items-center justify-between text-sm text-white/80 mb-2">
-          <span>Rencontres /</span>
+          <span>Progression de l'expédition</span>
           <span class="inline-flex items-center gap-1 text-white/70" v-if="run.status==='running'">
             <Clock4 class="h-4 w-4" />
-            Prochaine : {{ fmtHMS(nextEncounterIn) }}
+            <span v-if="fmtHMS(nextEncounterIn) === '0m 00s'">Récupération du loot et engagement de la prochaine rencontre...</span>
+            <span v-else>Prochaine rencontre : {{ fmtHMS(nextEncounterIn) }}</span>
           </span>
         </div>
         <div class="h-2 rounded-full bg-white/10 overflow-hidden">

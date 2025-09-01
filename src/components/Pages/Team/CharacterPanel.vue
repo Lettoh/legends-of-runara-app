@@ -5,6 +5,7 @@ import { computed } from 'vue'
 import placeholder from '@/assets/runara_logo.png'
 
 const props = defineProps<{
+  character: object
   name: string
   className?: string | null
   level: number
@@ -28,9 +29,17 @@ const pictureSrc = computed(() =>
       />
     </div>
 
-    <h3 class="text-lg font-semibold truncate">{{ name }}</h3>
+    <h3 class="text-lg font-semibold truncate mt-2">{{ name }}</h3>
     <p class="text-white/70">
       {{ className || '—' }} — <span class="text-white">Niv. {{ level }}</span>
     </p>
+    <div class="mt-2">
+      <div class="h-2 w-full rounded bg-white/10 overflow-hidden">
+        <div class="h-full bg-emerald-500" :style="{ width: character.xp_percent + '%' }"></div>
+      </div>
+      <div class="text-xs text-white/60 mt-1">
+        {{ character.xp }} / {{ character.xp_to_next }} XP
+      </div>
+    </div>
   </div>
 </template>

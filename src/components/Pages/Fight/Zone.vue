@@ -83,7 +83,7 @@ const hoverId   = ref<number | null>(null)
 const pos       = ref({ left: 0, top: 0 })
 const hovered   = computed(() => monsters.value.find(m => m.id === hoverId.value) ?? null)
 
-const POPOVER_W = 260
+const POPOVER_W = 350
 const GAP       = 12
 const HIDE_DELAY = 80
 let hideTimer: number | null = null
@@ -124,8 +124,7 @@ function hideNow()      { hoverId.value = null; if (hideTimer) { clearTimeout(hi
 function fmtPct(x: number | string | null | undefined) {
   const n = Number(x)
   if (!Number.isFinite(n)) return '—'
-  const v = n <= 1 ? n * 100 : n
-  return `${v.toFixed(v < 10 ? 1 : 0)}%`
+  return `${n.toFixed(n < 10 ? 1 : 0)}%`
 }
 function pctLabel(x: unknown) {
   if (typeof x !== 'number' || Number.isNaN(x)) return null

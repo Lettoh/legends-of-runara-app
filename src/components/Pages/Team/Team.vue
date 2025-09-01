@@ -64,7 +64,6 @@ function nextChar() {
     <div class="mb-4">
       <h1 class="text-3xl font-semibold text-white">Équipe</h1>
       <p class="text-white/60 text-sm">Gère tes personnages, sorts et équipements.</p>
-      <button @click="console.log(current)">Trigger</button>
     </div>
 
     <!-- grille centrale -->
@@ -75,6 +74,7 @@ function nextChar() {
       <!-- Portrait + infos -->
       <CharacterPanel
           v-if="current"
+          :character="current"
           :name="current.name"
           :class-name="current.class_name"
           :level="current.level"
