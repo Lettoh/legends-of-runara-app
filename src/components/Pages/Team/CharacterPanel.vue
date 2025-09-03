@@ -25,7 +25,7 @@ const pictureSrc = computed(() =>
       <img
           :src="pictureSrc"
           :alt="name"
-          class="max-h-full w-auto object-contain select-none pointer-events-none"
+          class="max-h-full w-auto object-contain select-none pointer-events-none rounded-xl"
       />
     </div>
 

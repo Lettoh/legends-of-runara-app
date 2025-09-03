@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from './components/Login.vue'
 import axios from "axios";
 
-import useAuth from './useAuth'
 import useIdleRun from "./useIdleRun.ts";
 import HelloWorld from "./components/HelloWorld.vue";
 import Admin from "./components/Pages/Admin/Admin.vue";
@@ -10,8 +9,8 @@ import Team from "./components/Pages/Team/Team.vue";
 import Fight from "./components/Pages/Fight/Fight.vue";
 import FightZone from "./components/Pages/Fight/Zone.vue";
 import Idling from "./components/Pages/Fight/Idling.vue";
-
-const { user } = useAuth()
+import useAuth from "./useAuth.ts";
+const { authenticated, hydrate } = useAuth()
 
 const routes = [
     { path: '/', name: 'home', component: HelloWorld, meta: { requiresAuth: true } },
@@ -48,6 +47,16 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+})
+
+router.beforeEach(async (to) => {
+    if (!authenticated.value) {
+        await hydrate()
+    }
+    if (to.meta?.requiresAuth && !authenticated.value) {
+        return { name: 'login', query: { redirect: to.fullPath } }
+    }
+    return true
 })
 
 /* --- helper API: dernière run finished/non-claim, côté serveur --- */
@@ -129,7 +138,6 @@ router.beforeEach(async (to) => {
     return true
 })
 
-/* garder ta mémoire de dernière page utile */
 router.afterEach((to) => {
     if (to.name !== 'login') {
         sessionStorage.setItem('lastPath', to.fullPath)

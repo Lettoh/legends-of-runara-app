@@ -6,11 +6,12 @@ import useAuth from "./useAuth.ts";
 import router from "./router.ts";
 import '@/lib/echo'
 
-axios.defaults.baseURL = 'http://localhost:8000'
+const API_BASE = import.meta.env.VITE_API_URL || ''
+axios.defaults.baseURL = API_BASE
 axios.defaults.withCredentials = true
 axios.defaults.withXSRFToken = true
 
-const { attempt, hydrate } = useAuth()
+const { hydrate } = useAuth()
 
 const app = createApp(App)
 

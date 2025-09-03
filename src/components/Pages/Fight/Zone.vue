@@ -211,7 +211,8 @@ watch(() => props.id, async (id) => {
           <div>
             <h2 class="text-2xl font-semibold text-white drop-shadow">{{ zone.name }}</h2>
             <span class="mt-1 inline-block text-[12px] rounded-full px-2 py-0.5 border border-white/20 bg-black/40 backdrop-blur-sm text-white">
-              Niv. {{ zone.min_level }}–{{ zone.max_level }}
+              <span v-if="zone.min_level != zone.max_level">Niv. {{ zone.min_level }}–{{ zone.max_level }}</span>
+              <span v-else>Niv. {{zone.min_level}}</span>
             </span>
           </div>
 

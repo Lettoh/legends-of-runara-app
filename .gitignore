@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# PHP artifacts (should not be in frontend)
+vendor/
+composer.lock
+composer.json

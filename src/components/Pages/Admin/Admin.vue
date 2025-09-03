@@ -4,12 +4,15 @@ import Zones from "@/components/Pages/Admin/Zones/Zones.vue";
 import Users from "@/components/Pages/Admin/Users/Users.vue";
 import Monsters from "@/components/Pages/Admin/Monsters/Monsters.vue";
 import Resources from "@/components/Pages/Admin/Resources/Resources.vue";
+
+import Spells from "@/components/Pages/Admin/Spells/Spells.vue";
 </script>
+
 
 <template>
   <div class="p-6 space-y-8">
     <!-- Section Zones -->
-    <Zones />
+    <Spells />\n    <Zones />
 
     <!-- Section Utilisateurs -->
     <Users />

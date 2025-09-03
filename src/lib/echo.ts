@@ -11,7 +11,7 @@ const USE_SELF_HOSTED = !!import.meta.env.VITE_PUSHER_HOST
 
 const echo = new Echo({
     broadcaster: 'pusher',
-    key: import.meta.env.VITE_PUSHER_APP_KEY || 'local-key',
+    key: import.meta.env.VITE_PUSHER_APP_KEY || import.meta.env.VITE_PUSHER_KEY || 'local-key',
 
     // ✅ requis par Pusher-JS (même en self-hosted)
     cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER || 'mt1',

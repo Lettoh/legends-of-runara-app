@@ -14,4 +14,16 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./src', import.meta.url)),
         },
     },
+    server: {
+      proxy: (function(){
+       const API_TARGET = process.env.VITE_API_URL ?? 'http://localhost:8000'
+          return {
+              '/api': { target: API_TARGET, changeOrigin: true, secure: false },
+              '/sanctum': { target: API_TARGET, changeOrigin: true, secure: false },
+              '/broadcasting': { target: API_TARGET, changeOrigin: true, secure: false },
+              '/login': { target: API_TARGET, changeOrigin: true, secure: false },
+              '/logout': { target: API_TARGET, changeOrigin: true, secure: false },
+          }
+      })(),
+ },
 })

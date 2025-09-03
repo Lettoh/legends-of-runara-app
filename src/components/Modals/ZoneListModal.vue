@@ -136,8 +136,8 @@ defineExpose({ applyPatch, removeById, refresh })
                     <div class="flex flex-wrap items-center gap-2">
                       <p class="font-semibold text-white break-words">{{ z.name }}</p>
                       <span class="text-[11px] rounded-full px-2 py-0.5 border border-white/10 bg-white/5 text-white/70">
-              Niv.{{ z.min_level }} à {{z.max_level}}
-            </span>
+                        Niv.{{ z.min_level }} à {{z.max_level}}
+                      </span>
                     </div>
 
                     <!-- ✨ description complète, pas de clamp ; on garde les retours à la ligne -->

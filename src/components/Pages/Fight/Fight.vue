@@ -69,7 +69,8 @@ const filtered = computed(() => {
           <span
               class="absolute left-3 top-3 text-[11px] rounded-full px-2 py-0.5
              border border-white/20 bg-black/40 backdrop-blur-sm text-white/90">
-            Niv. {{ z.min_level }}–{{ z.max_level }}
+            <span v-if="z.min_level != z.max_level">Niv. {{ z.min_level }}–{{ z.max_level }}</span>
+            <span v-else>Niv. {{z.min_level}}</span>
           </span>
         </div>
 
